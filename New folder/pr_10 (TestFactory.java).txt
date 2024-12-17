@@ -1,0 +1,105 @@
+//pr_10(TestFactory.java)
+
+//Car1.java
+
+package exam1;
+
+
+abstract class Car1 {
+ public abstract void showCarType();
+}
+
+___________________________
+
+//CarFactory.java
+
+package exam1;
+
+class CarFactory {
+    // Method to create a car based on the input type
+    public Car1 createCar(String carType) {
+        if (carType == null) {
+            return null;
+        }
+        
+        if (carType.equalsIgnoreCase("Hatchback")) {
+            return new Hatchback();
+        } else if (carType.equalsIgnoreCase("Sedan")) {
+            return new Sedan();
+        } else if (carType.equalsIgnoreCase("SUV")) {
+            return new SUV();
+        }
+
+        return null;
+    }
+}
+
+__________________________
+
+//HatchBack.java
+
+
+package exam1;
+
+class Hatchback extends Car1 {
+    @Override
+    public void showCarType() {
+        System.out.println("This is a Hatchback car.");
+    }
+}
+
+___________________________
+
+//Sedan.java
+
+package exam1;
+
+class Sedan extends Car1 {
+    @Override
+    public void showCarType() {
+        System.out.println("This is a Sedan car.");
+    }
+}
+
+___________________________
+
+//SUV.java
+
+package exam1;
+
+class SUV extends Car1 {
+    @Override
+    public void showCarType() {
+        System.out.println("This is an SUV car.");
+    }
+}
+
+___________________________
+
+//TestFactory.java
+
+package exam1;
+
+public class TestFactory {
+    public static void main(String[] args) {
+        // Creating the CarFactory object
+        CarFactory carFactory = new CarFactory();
+
+        // Asking the factory to create different types of cars
+        Car1 myCar1 = carFactory.createCar("Hatchback");
+        myCar1.showCarType();  // This should print: "This is a Hatchback car."
+
+        Car1 myCar2 = carFactory.createCar("Sedan");
+        myCar2.showCarType();  // This should print: "This is a Sedan car."
+
+        Car1 myCar3 = carFactory.createCar("SUV");
+        myCar3.showCarType();  // This should print: "This is an SUV car."
+    }
+}
+
+____________________________
+
+//OP
+//This is a Hatchback car.
+//This is a Sedan car.
+//This is an SUV car.

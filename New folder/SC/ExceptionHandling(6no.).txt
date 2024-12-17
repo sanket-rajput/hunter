@@ -1,0 +1,25 @@
+package assignment_no.pkg3;
+import java.util.Scanner;
+public class Assignment_no6 {
+	public static void main(String[] args) {
+		try{
+		int a,b,c;
+		System.out.println("Enter th two numbers for division:");
+		Scanner in=new Scanner(System.in);
+		a=Integer.parseInt(in.next());
+		b=Integer.parseInt(in.next());
+		c=a/b;
+		System.out.println("Result is :"+c);
+		}
+		catch(ArithmeticException e ) {
+		System.out.println("Division by zero");
+		}
+		catch(NumberFormatException b){
+		System.out.println("Invalid number");
+		}
+		finally{
+		System.out.println("Exception handling runs successfully.....");
+		}
+
+		}
+}

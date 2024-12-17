@@ -1,0 +1,147 @@
+import java.util.Scanner;
+
+class BankAccount {
+    private String accountHolderName;
+    private String accountNumber;
+    private double balance;
+    private double dailyWithdrawalLimit = 5000.00;
+    private double withdrawnToday = 0.0;
+
+    // Constructor to initialize account
+    public BankAccount(String accountHolderName, String accountNumber, double initialDeposit) {
+        this.accountHolderName = accountHolderName;
+        this.accountNumber = accountNumber;
+        this.balance = initialDeposit;
+        System.out.println("Account created successfully for " + accountHolderName + "!");
+    }
+
+    // Deposit money
+    public void deposit(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid deposit amount.");
+        } else {
+            balance += amount;
+            System.out.println("Successfully deposited: " + amount);
+            System.out.println("Updated balance: " + balance);
+        }
+    }
+
+    // Withdraw money
+    public void withdraw(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid withdrawal amount.");
+        } else if (amount > balance) {
+            System.out.println("Insufficient balance.");
+        } else if ((withdrawnToday + amount) > dailyWithdrawalLimit) {
+            System.out.println("Exceeds daily withdrawal limit of " + dailyWithdrawalLimit);
+        } else {
+            balance -= amount;
+            withdrawnToday += amount;
+            System.out.println("Successfully withdrew: " + amount);
+            System.out.println("Remaining balance: " + balance);
+        }
+    }
+
+    // Check balance
+    public void checkBalance() {
+        System.out.println("Available balance: " + balance);
+    }
+
+    // Display account information
+    public void displayAccountInfo() {
+        System.out.println("Account Holder Name: " + accountHolderName);
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: " + balance);
+    }
+
+    // Reset daily withdrawal limit (simulate end of day reset)
+    public void resetDailyLimit() {
+        withdrawnToday = 0.0;
+        System.out.println("Daily withdrawal limit reset.");
+    }
+}
+
+public class BankingSolution {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        BankAccount account = null;
+
+        while (true) {
+            System.out.println("\nBanking System");
+            System.out.println("1. Create Account");
+            System.out.println("2. Deposit Money");
+            System.out.println("3. Withdraw Money");
+            System.out.println("4. Check Balance");
+            System.out.println("5. Display Account Information");
+            System.out.println("6. Reset Daily Limit");
+            System.out.println("7. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    scanner.nextLine(); // Consume newline
+                    System.out.print("Enter Account Holder Name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter Account Number: ");
+                    String accNumber = scanner.nextLine();
+                    System.out.print("Enter Initial Deposit Amount: ");
+                    double initialDeposit = scanner.nextDouble();
+                    account = new BankAccount(name, accNumber, initialDeposit);
+                    break;
+
+                case 2:
+                    if (account != null) {
+                        System.out.print("Enter Deposit Amount: ");
+                        double depositAmount = scanner.nextDouble();
+                        account.deposit(depositAmount);
+                    } else {
+                        System.out.println("No account found. Please create an account first.");
+                    }
+                    break;
+
+                case 3:
+                    if (account != null) {
+                        System.out.print("Enter Withdrawal Amount: ");
+                        double withdrawAmount = scanner.nextDouble();
+                        account.withdraw(withdrawAmount);
+                    } else {
+                        System.out.println("No account found. Please create an account first.");
+                    }
+                    break;
+
+                case 4:
+                    if (account != null) {
+                        account.checkBalance();
+                    } else {
+                        System.out.println("No account found. Please create an account first.");
+                    }
+                    break;
+
+                case 5:
+                    if (account != null) {
+                        account.displayAccountInfo();
+                    } else {
+                        System.out.println("No account found. Please create an account first.");
+                    }
+                    break;
+
+                case 6:
+                    if (account != null) {
+                        account.resetDailyLimit();
+                    } else {
+                        System.out.println("No account found. Please create an account first.");
+                    }
+                    break;
+
+                case 7:
+                    System.out.println("Exiting Banking System. Goodbye!");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}

@@ -1,0 +1,68 @@
+//pr_03 (Inheritance.java)
+
+//.....practicle 3.....
+
+
+package exam1;
+class Employee{
+String name,address,mail;
+float id,mobile,basic;
+void salary() {
+float da, hra,pf,cf,gross;
+da=basic*97/100;
+hra=basic*18/100;
+pf=basic*12/100;
+cf=basic*0.1f/100;
+gross=basic+da+hra-pf-cf;
+System.out.println("Name:"+name);
+System.out.println("Basic salary"+basic);
+System.out.println("Gross salary"+gross);
+}
+}
+class programmer extends Employee{
+programmer (String name,int sal){
+this.name=name;
+basic=sal;
+
+}
+}
+class TeamLead extends Employee{
+TeamLead(String name,int sal){
+this.name=name;
+basic=sal;
+}
+}
+class APM extends Employee{
+APM(String name,int sal){
+this.name=name;
+basic=sal;
+}
+}
+class projectManager extends Employee{
+projectManager(String name,int sal){
+this.name=name;
+basic=sal;
+}
+}
+public class Inheritance {
+public static void main(String[] args) {
+programmer a=new programmer("Sagar",20000);
+a.salary();
+TeamLead b=new TeamLead("Ganesh",8000);
+b.salary();
+APM c=new APM("Gaurav",300000);
+c.salary();
+projectManager d=new projectManager("Aakash",4000);
+d.salary();
+}
+}
+
+
+//.....Output.....
+
+//Name:Gaurav
+//Basic salary300000.0
+//Gross salary608700.0
+//Name:Aakash
+//Basic salary4000.0
+//Gross salary8116.0

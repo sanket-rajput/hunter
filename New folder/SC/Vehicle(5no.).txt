@@ -1,0 +1,90 @@
+package assignment_no.pkg3;
+import java.io.*;
+import java.util.Scanner;
+
+interface Vehicle {
+    int speed = 30;
+    int gear = 1;
+    int breaks = 4;
+
+    void Gear_change(int a);
+    void SpeedUP(int b);
+    void apply_break();
+}
+
+class Car implements Vehicle {
+    public void Gear_change(int a) {
+        System.out.println("Car Gear change: " + (gear + a));
+    }
+
+    public void SpeedUP(int b) {
+        System.out.println("Car Speed: " + (speed + b));
+    }
+
+    public void apply_break() {
+        System.out.println("Car apply_break: " + breaks);
+    }
+}
+
+class Bicycle implements Vehicle {
+    public void Gear_change(int a) {
+        System.out.println("Bicycle Gear change: " + (gear + a));
+    }
+
+    public void SpeedUP(int b) {
+        System.out.println("Bicycle Speed: " + (speed + b));
+    }
+
+    public void apply_break() {
+        System.out.println("Bicycle apply_break: " + breaks);
+    }
+}
+
+class Bike implements Vehicle {
+    public void Gear_change(int a) {
+        System.out.println("Bike Gear change: " + (gear + a));
+    }
+
+    public void SpeedUP(int b) {
+        System.out.println("Bike Speed: " + (speed + b));
+    }
+
+    public void apply_break() {
+        System.out.println("Bike apply_break: " + breaks);
+    }
+}
+
+public class Assignment_No5 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        // Input for Car
+        System.out.println("Enter gear change and speed increase for Car:");
+        int a = in.nextInt();
+        int b = in.nextInt();
+        Car c1 = new Car();
+        c1.Gear_change(a);
+        c1.SpeedUP(b);
+        c1.apply_break();
+
+        // Input for Bike
+        System.out.println("Enter gear change and speed increase for Bike:");
+        int a1 = in.nextInt();
+        int b1 = in.nextInt();
+        Bike b6 = new Bike();
+        b6.Gear_change(a1);
+        b6.SpeedUP(b1);
+        b6.apply_break();
+
+        // Input for Bicycle
+        System.out.println("Enter gear change and speed increase for Bicycle:");
+        int a2 = in.nextInt();
+        int b2 = in.nextInt();
+        Bicycle bc = new Bicycle();
+        bc.Gear_change(a2);
+        bc.SpeedUP(b2);
+        bc.apply_break();
+
+        in.close();
+    }
+}

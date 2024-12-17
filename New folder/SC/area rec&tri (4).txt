@@ -1,0 +1,36 @@
+package assignment_no.pkg3;
+import java.util.*;
+
+abstract class Shape{
+double num1;
+double num2;
+abstract public void compute_area();
+}
+class Rectangle extends Shape{
+public void compute_area(){
+System.out.println("Enter the length and breadths:");
+Scanner sc=new Scanner(System.in);
+num1=sc.nextDouble();
+num2=sc.nextDouble();
+System.out.println("Area of Rectangle is:"+(num1*num2));
+sc.close();
+}
+}
+class Triangle extends Shape{
+public void compute_area(){
+System.out.println("Enter the base and height:");
+Scanner sc=new Scanner(System.in);
+num1=sc.nextDouble();
+num2=sc.nextDouble();
+System.out.println("Area of Triangle is:"+num1/2*num2);
+sc.close();
+}
+}
+public class AssignmentNo4 {
+	public static void main(String[] args) {
+		Shape rec=new Rectangle();
+		rec.compute_area();
+		Shape tri=new Triangle();
+		tri.compute_area();
+		}
+}

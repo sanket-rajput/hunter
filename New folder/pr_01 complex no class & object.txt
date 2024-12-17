@@ -1,0 +1,90 @@
+//pr_01 (Complex.java) complex no class & object
+
+
+package exam1;
+
+import java.util.Scanner;
+
+public class Complex {
+
+float real,img;
+public Complex() {
+real=0;
+img=0;
+}
+public Complex(float a,float b) {
+real=a;
+img=b;
+}
+void display(Complex C1,Complex C2) {
+System.out.println("First complex number is=("+C1.real+")+("+C1.img+")i");
+System.out.println("Second complex number is=("+C2.real+")+("+C2.img+")i");
+}
+void add(Complex C1,Complex C2) {
+float real,img;
+real=C1.real+C2.real;
+img=C1.img+C2.img;
+System.out.println("Addition is=("+real+")+("+img+")i");
+}
+ void sub(Complex C1,Complex C2) {
+float real,img;
+real=C1.real-C2.real;
+img=C1.img-C2.img;
+System.out.println("Substraction is=("+real+")+("+img+")i");
+}
+void multiplication(Complex C1,Complex C2) {
+float real,img;
+real=C1.real*C2.real;
+img=C1.img*C2.img;
+System.out.println("Multiplication is=("+real+")+("+img+")i");
+}
+void division(Complex C1,Complex C2) {
+float real,img;
+real=C1.real/C2.real;
+img=C1.img/C2.img;
+System.out.println("Division is=("+real+")+("+img+")i");
+}
+public static void main(String[] args) {
+float num1,num2;
+Scanner sc=new Scanner(System.in);
+Complex a=new Complex();
+System.out.println("Enter complex number in formate a+bi:");
+System.out.println("Enter real part of first number:");
+num1=sc.nextFloat();
+System.out.println("Enter imaginary part of first number:");
+num2=sc.nextFloat();
+Complex comp1=new Complex(num1,num2);
+System.out.println("Enter real part of second number:");
+num1=sc.nextFloat();
+System.out.println("Enter imaginary part of second number:");
+num2=sc.nextFloat();
+Complex comp2=new Complex(num1,num2);
+a.display(comp1,comp2);
+a.add(comp1,comp2);
+a.sub(comp1,comp2);
+a.multiplication(comp1,comp2);
+a.division(comp1,comp2);
+}
+
+}
+
+
+
+
+/*.....Output.....
+Enter complex number in formate a+bi:
+Enter real part of first number:
+3
+Enter imaginary part of first number:
+4
+Enter real part of second number:
+7
+Enter imaginary part of second number:
+8
+First complex number is=(3.0)+(4.0)i
+Second complex number is=(7.0)+(8.0)i
+Addition is=(10.0)+(12.0)i
+Substraction is=(-4.0)+(-4.0)i
+Multiplication is=(21.0)+(32.0)i
+Division is=(0.42857143)+(0.5)i
+*/

@@ -1,0 +1,111 @@
+
+
+//pr_07 (PropertyCounter.java) generic method
+
+
+
+package exam1;
+
+
+import java.util.*;
+
+public class PropertyCounter<T> {
+
+    // Generic method to count the number of elements with a specific property
+    public int countProperty(List<T> collection, Property<T> property) {
+        int count = 0;
+        for (T element : collection) {
+            if (property.hasProperty(element)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // Interface to define a property for a given type T
+    interface Property<T> {
+        boolean hasProperty(T element);
+    }
+
+    // Property implementation to check even numbers
+    public static class EvenNumberProperty implements Property<Integer> {
+        @Override
+        public boolean hasProperty(Integer element) {
+            return element % 2 == 0;
+        }
+    }
+
+    // Property implementation to check odd numbers
+    public static class OddNumberProperty implements Property<Integer> {
+        @Override
+        public boolean hasProperty(Integer element) {
+            return element % 2 != 0;
+        }
+    }
+
+    // Property implementation to check prime numbers
+    public static class PrimeNumberProperty implements Property<Integer> {
+        @Override
+        public boolean hasProperty(Integer element) {
+            if (element <= 1) {
+                return false;
+            }
+            for (int i = 2; i <= Math.sqrt(element); i++) {
+                if (element % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    // Property implementation to check palindromes
+    public static class PalindromeProperty implements Property<String> {
+        @Override
+        public boolean hasProperty(String element) {
+            String reversed = new StringBuilder(element).reverse().toString();
+            return element.equals(reversed);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Create a list of integers
+        List<Integer> numbers = Arrays.asList(10, 15, 23, 42, 7, 4, 11, 17);
+
+        // Create a list of strings
+        List<String> words = Arrays.asList("madam", "racecar", "hello", "level", "world");
+
+        // Create an object of PropertyCounter
+        PropertyCounter<Integer> integerCounter = new PropertyCounter<>();
+        PropertyCounter<String> stringCounter = new PropertyCounter<>();
+
+        // Count and print the number of even numbers in the list
+        EvenNumberProperty evenProperty = new EvenNumberProperty();
+        int evenCount = integerCounter.countProperty(numbers, evenProperty);
+        System.out.println("Even numbers count: " + evenCount);
+
+        // Count and print the number of odd numbers in the list
+        OddNumberProperty oddProperty = new OddNumberProperty();
+        int oddCount = integerCounter.countProperty(numbers, oddProperty);
+        System.out.println("Odd numbers count: " + oddCount);
+
+        // Count and print the number of prime numbers in the list
+        PrimeNumberProperty primeProperty = new PrimeNumberProperty();
+        int primeCount = integerCounter.countProperty(numbers, primeProperty);
+        System.out.println("Prime numbers count: " + primeCount);
+
+        // Count and print the number of palindrome words in the list
+        PalindromeProperty palindromeProperty = new PalindromeProperty();
+        int palindromeCount = stringCounter.countProperty(words, palindromeProperty);
+        System.out.println("Palindrome words count: " + palindromeCount);
+    }
+}
+
+
+
+//op
+//
+//Even numbers count: 3
+//Odd numbers count: 5
+//Prime numbers count: 4
+//Palindrome words count: 3

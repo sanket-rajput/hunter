@@ -1,0 +1,153 @@
+package assignment_no.pkg3;
+class Employee{
+String Emp_name;
+int Emp_id;
+String Address;
+String Mail_id;
+int Mobile_no;
+Employee(String n,int id,String Add,String mail,int mobile){
+this.Emp_name=n;
+this.Emp_id=id;
+this.Address=Add;
+this.Mail_id=mail;
+this.Mobile_no=mobile;
+}
+public void display(){
+System.out.println("Emaployee Name:"+Emp_name);
+System.out.println("Emaployee ID:"+Emp_id);
+System.out.println("Emaployee Address:"+Address);
+System.out.println("Emaployee email-id:"+Mail_id);
+System.out.println("Emaployee Mobile number:"+Mobile_no);
+}
+public void PaySlip()
+{
+}
+public void calculculate(){};
+
+}
+
+class Programmer extends Employee{
+double BP=50000,gross_salary,net_salary;
+
+public Programmer(String n, int id, String Add, String mail, int mobile) {
+super(n, id, Add, mail, mobile);
+}
+public void calculate(){
+
+double DA=(97*BP)/100;
+double HRA=(10*BP)/100;
+double PF=(12*BP)/100;
+double SC=(0.1*BP)/100;
+gross_salary=DA+HRA+BP;
+net_salary=gross_salary-PF-SC;
+
+}
+public void PaySlip(){
+calculate();
+System.out.println("\n------ Emaployee Pay Slip ------");
+super.display();
+System.out.println("Designation:Programmer");
+System.out.println("BasicPay:"+BP);
+System.out.println("Gross salary:"+gross_salary);
+System.out.println("Net salary:"+net_salary);
+
+}
+
+}
+
+class Team_lead extends Employee{
+double BP=60000,gross_salary,net_salary;
+
+public Team_lead(String n, int id, String Add, String mail, int mobile) {
+super(n, id, Add, mail, mobile);
+}
+public void calculate(){
+
+double DA=(97*BP)/100;
+double HRA=(10*BP)/100;
+double PF=(12*BP)/100;
+double SC=(0.1*BP)/100;
+gross_salary=DA+HRA+BP;
+net_salary=gross_salary-PF-SC;
+
+}
+public void PaySlip(){
+calculate();
+System.out.println("\n------ Emaployee Pay Slip ------");
+super.display();
+System.out.println("Designation:Team Lead");
+System.out.println("BasicPay:"+BP);
+System.out.println("Gross salary:"+gross_salary);
+System.out.println("Net salary:"+net_salary);
+
+}
+
+}
+
+class AssistantProjectManager extends Employee{
+double BP=70000,gross_salary,net_salary;
+
+public AssistantProjectManager(String n, int id, String Add, String mail, int mobile) {
+super(n, id, Add, mail, mobile);
+}
+public void calculate(){
+double DA=(97*BP)/100;
+double HRA=(10*BP)/100;
+double PF=(12*BP)/100;
+double SC=(0.1*BP)/100;
+gross_salary=DA+HRA+BP;
+net_salary=gross_salary-PF-SC;
+
+}
+public void PaySlip(){
+calculate();
+System.out.println("\n------ Emaployee Pay Slip ------");
+super.display();
+System.out.println("Designation:Assistant Project Manager");
+System.out.println("BasicPay:"+BP);
+System.out.println("Gross salary:"+gross_salary);
+System.out.println("Net salary:"+net_salary);
+
+}
+}
+class ProjectManager extends Employee{
+double BP=85000,gross_salary,net_salary;
+
+public ProjectManager(String n, int id, String Add, String mail, int mobile) {
+super(n, id, Add, mail, mobile);
+}
+public void calculate(){
+double DA=(97*BP)/100;
+double HRA=(10*BP)/100;
+double PF=(12*BP)/100;
+double SC=(0.1*BP)/100;
+gross_salary=DA+HRA+BP;
+net_salary=gross_salary-PF-SC;
+}
+public void PaySlip(){
+calculate();
+System.out.println("\n------ Emaployee Pay Slip ------");
+super.display();
+System.out.println("Designation:Project Manager");
+System.out.println("BasicPay:"+BP);
+System.out.println("Gross salary:"+gross_salary);
+System.out.println("Net salary:"+net_salary);
+
+}
+}
+public class Assignment_no3 {
+	public static void main(String[] args) {
+
+		Employee e=new ProjectManager("Aniket",32,"Borivali","anik@gmail.com",98997877);
+		Programmer p=new Programmer("xyz",1,"BKC","xyx@gmail.com",9878978);
+		Employee e1=new Team_lead("More",3,"Borivali","anik@gmail.com",989877);
+
+		AssistantProjectManager a=new AssistantProjectManager("mno",1,"pune","anik@gmail.com",828282);
+		p.PaySlip();
+		e.PaySlip();
+		e1.PaySlip();
+		a.PaySlip();
+
+		}
+
+		}

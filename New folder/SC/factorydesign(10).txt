@@ -1,0 +1,84 @@
+package f;
+
+
+abstract class Car {
+ public abstract void showCarType();
+}
+
+-----------------------------------------------------------------
+
+package f;
+
+class CarFactory {
+    // Method to create a car based on the input type
+    public Car createCar(String carType) {
+        if (carType == null) {
+            return null;
+        }
+        
+        if (carType.equalsIgnoreCase("Hatchback")) {
+            return new Hatchback();
+        } else if (carType.equalsIgnoreCase("Sedan")) {
+            return new Sedan();
+        } else if (carType.equalsIgnoreCase("SUV")) {
+            return new SUV();
+        }
+
+        return null;
+    }
+}
+
+-------------------------------------------------------------
+
+
+package f;
+
+class Hatchback extends Car {
+    @Override
+    public void showCarType() {
+        System.out.println("This is a Hatchback car.");
+    }
+}
+
+-----------------------------------------------------------
+
+package f;
+
+class Sedan extends Car {
+    @Override
+    public void showCarType() {
+        System.out.println("This is a Sedan car.");
+    }
+}
+
+------------------------------------------------------------
+
+package f;
+
+class SUV extends Car {
+    @Override
+    public void showCarType() {
+        System.out.println("This is an SUV car.");
+    }
+}
+
+--------------------------------------------------------------
+
+package f;
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating the CarFactory object
+        CarFactory carFactory = new CarFactory();
+
+        // Asking the factory to create different types of cars
+        Car myCar1 = carFactory.createCar("Hatchback");
+        myCar1.showCarType();  // This should print: "This is a Hatchback car."
+
+        Car myCar2 = carFactory.createCar("Sedan");
+        myCar2.showCarType();  // This should print: "This is a Sedan car."
+
+        Car myCar3 = carFactory.createCar("SUV");
+        myCar3.showCarType();  // This should print: "This is an SUV car."
+    }
+}

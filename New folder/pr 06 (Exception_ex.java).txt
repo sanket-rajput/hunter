@@ -1,0 +1,41 @@
+
+//pr 06 (Exception_ex.java)
+
+
+package exam1;
+
+import java.util.Scanner;
+public class Exception_ex {
+	public static void main(String[] args) {
+		try{
+		int a,b,c;
+		System.out.println("Enter th two numbers for division:");
+		Scanner in=new Scanner(System.in);
+		a=Integer.parseInt(in.next());
+		b=Integer.parseInt(in.next());
+		c=a/b;
+		System.out.println("Result is :"+c);
+		}
+		catch(ArithmeticException e ) {
+		System.out.println("Division by zero");
+		}
+		catch(NumberFormatException b){
+		System.out.println("Invalid number");
+		}
+		finally{
+		System.out.println("Exception handling runs successfully.....");
+		}
+
+		}
+}
+
+
+
+//op
+//
+//
+//Enter th two numbers for division:
+//10
+//0
+//Division by zero
+//Exception handling runs successfully.....
