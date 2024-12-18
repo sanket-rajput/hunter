@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+
+// Function to maintain the max-heap property
+void Maxheapify(int Arr[], int n, int i)
+{
+    int largest = i;       // Assume the current node is the largest
+    int l = 2 * i + 1;     // Left child index
+    int r = 2 * i + 2;     // Right child index
+
+    // Check if the left child is larger than the current largest
+    if (l < n && Arr[l] > Arr[largest])
+    {
+        largest = l;
+    }
+
+    // Check if the right child is larger than the current largest
+    if (r < n && Arr[r] > Arr[largest])
+    {
+        largest = r;
+    }
+
+    // If the largest value is not the current node, swap and recurse
+    if (largest != i)
+    {
+        swap(Arr[i], Arr[largest]);
+        Maxheapify(Arr, n, largest);
+    }
+}
+
+// Function to perform heap sort
+void Maxheapsort(int Arr[], int n)
+{
+    // Build the max heap
+    for (int i = n / 2 - 1; i >= 0; i--)
+    {
+        Maxheapify(Arr, n, i);
+    }
+
+    // Extract elements one by one
+    for (int i = n - 1; i > 0; i--)
+    {
+        swap(Arr[0], Arr[i]);       // Move current root to end
+        Maxheapify(Arr, i, 0);      // Restore heap property for the reduced heap
+    }
+}
+
+// Function to display the array
+void Display(int Arr[], int n)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        cout << Arr[i] << " ";
+    }
+    cout << "\n";
+}
+
+int main()
+{
+    int n;
+    cout << "How many elements you want to sort?: ";
+    cin >> n;
+
+    // Dynamically allocate the array
+    int* Arr = new int[n];
+
+    // Input the elements
+    cout << "Enter " << n << " Elements: \n";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> Arr[i];
+    }
+
+    // Perform heap sort
+    Maxheapsort(Arr, n);
+
+    // Display the sorted array
+    cout << "\nSorted array is: \n";
+    Display(Arr, n);
+
+    // Free the dynamically allocated memory
+    delete[] Arr;
+
+    return 0;
+}
